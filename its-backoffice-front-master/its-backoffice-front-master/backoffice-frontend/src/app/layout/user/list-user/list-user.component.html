@@ -1,0 +1,67 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-blue">
+            <h4 class="card-title ">Lista de Utilizadores</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Nome" [(ngModel)]="filter.name" (keydown.enter)="find()">
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field>
+                  <input matInput placeholder="Username" [(ngModel)]="filter.username" (keydown.enter)="find()">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="table-responsive" >
+              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource.data.length > 0">
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef> Nome </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="username">
+                  <th mat-header-cell *matHeaderCellDef> Username </th>
+                  <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="creation">
+                  <th mat-header-cell *matHeaderCellDef> Data de Criação </th>
+                  <td mat-cell *matCellDef="let element"> {{element.creation | date:'dd/MM/yyyy HH:mm:ss'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="lastUpdated">
+                  <th mat-header-cell *matHeaderCellDef> Data de Atualização </th>
+                  <td mat-cell *matCellDef="let element"> {{element.lastUpdated | date:'dd/MM/yyyy HH:mm:ss'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                  <th mat-header-cell *matHeaderCellDef class="text-center"> Ações </th>
+                  <td mat-cell *matCellDef="let element" class="text-center">
+                    <button mat-icon-button (click)="edit(element.id)">
+                      <mat-icon class="mat-18">edit</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="delete(element.id)">
+                      <mat-icon class="mat-18">delete_forever</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              <div *ngIf="dataSource.data.length === 0">Nenhum registro encontrado.</div>
+              <mat-paginator #paginator [pageSize]="2" [pageSizeOptions]="[2, 4, 6, 10, 20]"></mat-paginator>
+            </div>
+            <button mat-raised-button type="submit" class="btn btn-blue pull-right" (click)="add()">Novo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

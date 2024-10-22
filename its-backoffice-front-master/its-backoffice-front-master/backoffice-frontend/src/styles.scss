@@ -1,0 +1,97 @@
+$white: white;
+
+$grey-ligther: #f9f9f9;
+$grey-ligth: #eee;
+$grey: #dad9d6;
+$grey-hard: #455560;
+
+$grey-blue-ligth: #abc3de;
+$grey-blue: #7C9DC1;
+$grey-blue-hard: #51759E;
+
+$blue-ligth: #8DC2FA;
+$blue: #3089e8;
+$blue-hard: #0F76E1;
+
+$hard-blue-ligth: #5076ca;
+$hard-blue: #3255A4;
+$hard-blue-hard: #223a70;
+
+$sky-blue-ligth: #aacff6;
+$sky-blue: #6dacef;
+$sky-blue-hard: #3089e8;
+
+$red-ligth: #cf7f86;
+$red: #bd4d58;
+$red-hard: #90363f;
+
+$purple-ligth: #9f65bc;
+$purple: #7d439a;
+$purple-hard: #572e6b;
+
+$green-neon-ligth: #C8FFA3;
+$green-neon: #6dff87;
+$green-neon-hard: #5DDF91;
+
+$green-ligth: #99C221;
+$green: #99C221;
+$green-hard: #6b8817;
+
+$yellow-ligth: #f4ff19;
+$yellow: #cad400;
+$yellow-hard: #899000;
+
+$orange-ligth: #eab53e;
+$orange: #ce9516;
+$orange-hard: #91690f;
+
+$font-family-icons: "Material Design Icons";
+
+@import '../node_modules/material-design-icons/iconfont/material-icons.css';
+
+
+@mixin iconToastr() {
+    font-family: $font-family-icons;
+    font-size: 20pt;
+    margin-right: 15px;
+}
+
+@mixin messageToastr() {
+    display: flex;
+    align-items: center;
+    place-content: center;
+}
+
+@mixin configureToastr($background, $icon) {
+    background: $background;
+    padding: 2px;
+    border-radius: 50px;
+    
+    .toast-message{
+        @include messageToastr();
+
+        &:before{
+            @include iconToastr();
+            content: $icon;
+        }
+    }
+}
+
+#toast-container {
+
+    .custom-info {
+        @include configureToastr($background: $sky-blue, $icon: "");
+    }
+
+    .custom-error{
+        @include configureToastr($background: $red, $icon: "");
+    }
+
+    .custom-success{
+        @include configureToastr($background: $green, $icon: "");
+    }
+
+    .custom-warning{
+        @include configureToastr($background: $orange, $icon: "");
+    }
+}

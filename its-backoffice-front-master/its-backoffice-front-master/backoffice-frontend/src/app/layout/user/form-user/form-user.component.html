@@ -1,0 +1,45 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-blue">
+                        <h4 class="card-title" *ngIf="!user.id">Adicionar Utilizador</h4>
+                        <h4 class="card-title" *ngIf="user.id">Atualizar Utilizador</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Name" type="text" formControlName="name">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Username*" formControlName="username" [readonly]="user.id">
+                                        <mat-error>O campo "Username" é obrigatório</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field>
+                                        <mat-pass-toggle-visibility #toggle matSuffix></mat-pass-toggle-visibility>
+                                        <input matInput placeholder="Password*" [type]="toggle.type"
+                                            formControlName="password">
+                                        <mat-error>O campo "Password" é obrigatório</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <button mat-raised-button type="submit" class="btn btn-blue pull-right">Salvar</button>
+                            <button mat-raised-button type="button" class="btn btn-grey pull-right"
+                                (click)="back()">Voltar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
