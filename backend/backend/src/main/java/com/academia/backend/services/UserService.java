@@ -57,11 +57,9 @@ public class UserService {
                 }
             });
         } catch (Exception e) {
-            // Log da exceção
-            System.err.println("Erro ao encontrar os users: " + e.getMessage());
+            System.err.println("Erro ao encontrar os users: " + e.getMessage());    // Log da exceção
             return new ArrayList<>(); // Retorna uma lista vazia em caso de erro
         }
-
         return users;
     }
 
