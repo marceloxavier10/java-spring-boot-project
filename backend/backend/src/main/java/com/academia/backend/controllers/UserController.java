@@ -29,9 +29,8 @@ public class UserController {
                                                          @RequestParam(required = false) String username) {
         List<UserOutput> users;
 
-        if (name != null || username != null) {           // Verifica se o nome ou username foi passado
-            // Agora, este metodo retorna uma lista
-            users = userService.findUser(name, username); // busca vários users
+        if (name != null || username != null) {  // Verifica se o nome ou username foi passado
+            users = userService.findUser(name, username); // Busca vários users
         } else {
             users = userService.getAllUsers(); // Metodo para listar todos os users
         }
