@@ -10,7 +10,6 @@ public class UserOutput {
     private LocalDateTime creation;
     private LocalDateTime lastUpdated;
 
-
     public UserOutput(Integer id, String name, String username, String password, LocalDateTime creation, LocalDateTime lastUpdated) {
         this.username = username;
         this.password = password;
@@ -67,4 +66,5 @@ public class UserOutput {
     public void setLastUpdated(LocalDateTime lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
+    
 }
